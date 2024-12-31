@@ -9,6 +9,8 @@ function onLoad() {
 
 function displayItemsOnHomePage() {
   let itemsContainer = document.querySelector(".items-container");
+  if (!itemsContainer) return;
+
   let innerHTML = ``;
   items.forEach((item) => {
     innerHTML += `
@@ -43,6 +45,7 @@ function displayBagIcon() {
 }
 
 function addToBag(itemID) {
+  if (bagItems.includes(itemID)) return;
   bagItems.push(itemID);
   localStorage.setItem("bagItems", JSON.stringify(bagItems));
   displayBagIcon();
